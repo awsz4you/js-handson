@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <h1>book show</h1>
+    <div id="app"></div>
+    <script>
+    const bookId = location.hash.replace(/#/,'')
+    const url = `/books/${bookId}`
+    console.log(url)
+    $.get(url).then(book=>{
+        const content = `
+        <li>id:${book._id}</li>
+        <li>title:${book.title}</li>
+        <li>price:${book.price}</li>
+        `
+        $('#app').html(`<ul>${content}</ul>`)
+    })
+    .fail((xhr, status, error)=>{
+        alert('book id get ajax error.')
+        console.error(error)
+    })
+    </script>
+</body>
+</html>

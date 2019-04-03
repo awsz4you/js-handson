@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="App">
+<head>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+</head>
+<body>
+    
+    <div ng-controller="IndexController">
+        <h1>books list</h1>
+        <ol>
+            <li ng-repeat="book in books">
+                {{book.id}}：{{book.title}}：{{book.price}}
+            </li>
+        </ol>
+    </div>
+    
+    <script>
+    
+    const app = angular.module('App', [])
+    
+    app.controller('IndexController', function($scope) {
+        const url = `/books`
+        apiGetBook(url, $scope)
+    })
+
+    const apiGetBook = (url, $scope)=>{
+        $.get(url).then(books=>{
+            $scope.books = books
+            $scope.$apply()
+        })
+    }
+
+    </script>
+</body>
+</html>

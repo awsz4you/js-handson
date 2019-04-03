@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <h1>book register</h1>
+    <form id="form-book">
+        id:<input id="_id" required/><br>
+        title:<input id="title" required/><br>
+        price:<input id="price" required/><br>
+        <button>regsiter</button>
+    </form>
+    <script>
+    const url = `/books`
+    
+    $("#form-book").on('submit', event =>{
+        event.preventDefault()
+        //TODO
+
+    })
+    </script>
+</body>
+</html>

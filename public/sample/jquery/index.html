@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <h1>books list</h1>
+    <div id="app"></div>
+    <script>
+    const url = `/books`
+    $.get(url).then(books=>{
+        let content = ''
+        books.forEach(book=>{
+            content += `<li>${book._id}：${book.title}：${book.price}</li>`
+        })
+        
+        $('#app').html(`<ol>${content}</ol>`)
+    })
+    .fail((xhr, status, error)=>{
+        alert('books get ajax error.')
+        console.error(error)
+    })
+    </script>
+</body>
+</html>
